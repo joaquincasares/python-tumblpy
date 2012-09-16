@@ -264,10 +264,10 @@ class Tumblpy(object):
                 resp = {'status': 200}
                 content = req.read()
             else:
-                resp, content = self.client.request(url, 'POST', urllib.urlencode(params), headers=self.headers)
+                resp, content = self.client.request(url, 'POST', urllib.urlencode(params), headers=self.headers.copy())
         else:
             url = '%s?%s' % (url, urllib.urlencode(params))
-            resp, content = self.client.request(url, 'GET', headers=self.headers)
+            resp, content = self.client.request(url, 'GET', headers=self.headers.copy())
 
         try:
             # If it is an avatar we need to check the HEAD of the request
